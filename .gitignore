@@ -3,3 +3,7 @@
 /Viikko1/RiippuvuuksienInjektointi/build/
 /Viikko1/RiippuvuuksienInjektointi/.nb-gradle/
 /Viikko2/Verkkokauppa1/.nb-gradle/
+/Viikko3/.nb-gradle/
+/.nb-gradle/
+.gradle
+build/
