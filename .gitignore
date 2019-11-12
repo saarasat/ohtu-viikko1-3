@@ -8,3 +8,6 @@
 .gradle
 build/
 /Viikko3/HelloCucumber/.nb-gradle/
+/Viikko3/LoginCucumber/.nb-gradle/
+/Viikko3/WebLogin/.nb-gradle/
+node_modules/
