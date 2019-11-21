@@ -11,3 +11,5 @@ build/
 /Viikko3/LoginCucumber/.nb-gradle/
 /Viikko3/WebLogin/.nb-gradle/
 node_modules/
+/Viikko2/Teht1/.nb-gradle/
+/build/
