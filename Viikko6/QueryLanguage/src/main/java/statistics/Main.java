@@ -1,6 +1,7 @@
 package statistics;
 
 import statistics.matcher.*;
+import statistics.QueryBuilder;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,41 +11,23 @@ public class Main {
         // "https://nhlstatisticsforohtu.herokuapp.com/players.txt"
 
         Statistics stats = new Statistics(new PlayerReaderImpl(url));
-          
-        Matcher m = new And( new HasAtLeast(5, "goals"),
-                             new HasAtLeast(5, "assists"),
-                             new PlaysIn("PHI")
-        );
-        
+
+        QueryBuilder query = new QueryBuilder();
+
+        Matcher v = query.hasFewerThan(5, "goals").playsIn("NYR").hasAtLeast(3, "assists").build();
+
+        Matcher m1 = query.playsIn("PHI")
+                .hasAtLeast(10, "assists")
+                .hasFewerThan(8, "goals").build();
+
+        Matcher m2 = query.playsIn("EDM")
+                .hasAtLeast(20, "points").build();
+
+        Matcher m = query.oneOf(m1, m2);
+
         for (Player player : stats.matches(m)) {
-            System.out.println(player);
+            System.out.println( player );
         }
-        System.out.println("");
-
-        Matcher n = new And( 
-            new Not( new HasAtLeast(1, "goals") ), 
-            new PlaysIn("NYR")
-        );
-
-        for (Player player : stats.matches(n)) {
-            System.out.println(player);
-        }
-        System.out.println("");
-
-
-        Matcher x = new And(
-            new HasAtLeast(20, "points"),
-            new Or( 
-                new PlaysIn("NYR"),
-                new PlaysIn("NYI"),
-                new PlaysIn("NJD")
-            )
-        );
-        
-        for (Player player : stats.matches(x)) {
-            System.out.println(player);
-        }
-        System.out.println("");
-
+          
     }
 }

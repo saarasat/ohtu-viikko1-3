@@ -4,8 +4,14 @@ import statistics.Player;
 
 public class All implements Matcher {
     
+    Matcher matcher;
+
+    public All() {
+    }
+
     @Override
     public boolean matches(Player p) {
-        return true;
+        if (p.getTeam().length() > 0) return true;
+        return false;
     }
 }
